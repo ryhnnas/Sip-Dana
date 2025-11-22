@@ -1,16 +1,31 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { checkConnection } from './config/db'; 
-import mainRouter from './routes'; 
+import { checkConnection } from './config/db';
+import mainRouter from './routes';
 
 dotenv.config();
 
 const app: Express = express();
 const PORT = process.env.PORT || 5001;
 
+const ALLOWED_ORIGINS = [
+    process.env.CLIENT_URL,     
+    'http://localhost:5173',      
+    'http://127.0.0.0:5173',     
+];
+
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173'
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (ALLOWED_ORIGINS.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error('CORS Blocked:', origin);
+      callback(new Error(`Origin ${origin} not allowed by CORS`), false);
+    }
+  }
 }));
 
 app.use(express.json());
