@@ -71,7 +71,7 @@ const FinancialSummaryCard: React.FC<FinancialSummaryCardProps> = ({
             className="d-flex justify-content-between align-items-center py-2 px-1" 
             style={{ borderBottom: '1px solid var(--sipdana-gray-300)' }}
           >
-            <h6 className="text-muted small mb-0 text-uppercase">Income</h6>
+            <h6 className="text-muted small mb-0 text-uppercase">Pendapatan</h6>
             <h5 className="fw-bold mb-0" style={{ color: 'var(--sipdana-accent-green-base)' }}>
               {formatAmount(income)}
             </h5>
@@ -79,7 +79,7 @@ const FinancialSummaryCard: React.FC<FinancialSummaryCardProps> = ({
           
           {/* 3. Expenses */}
           <div className="d-flex justify-content-between align-items-center py-2 px-1">
-            <h6 className="text-muted small mb-0 text-uppercase">Expenses</h6>
+            <h6 className="text-muted small mb-0 text-uppercase">Pengeluaran</h6>
             <h5 className="fw-bold mb-0" style={{ color: 'var(--sipdana-accent-red-base)' }}>
               {formatAmount(expenses)}
             </h5>
@@ -102,9 +102,9 @@ const FinancialSummaryCard: React.FC<FinancialSummaryCardProps> = ({
 
         {/* Filter Buttons */}
         <ButtonGroup size="sm" className="w-100">
-           <Button variant={filterMode === 'weekly' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('weekly')} > Weekly </Button>
-           <Button variant={filterMode === 'monthly' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('monthly')} > Monthly </Button>
-           <Button variant={filterMode === 'annual' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('annual')} > Annual </Button>
+           <Button variant={filterMode === 'weekly' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('weekly')} > Mingguan </Button>
+           <Button variant={filterMode === 'monthly' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('monthly')} > Bulanan </Button>
+           <Button variant={filterMode === 'annual' ? 'primary' : 'outline-primary'} onClick={() => onChangeFilterMode('annual')} > Tahunan </Button>
         </ButtonGroup>
       </Card.Body>
     </Card>
